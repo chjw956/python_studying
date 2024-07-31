@@ -1,4 +1,4 @@
-# 완전 검색 이용 방법
+# 완전 검색 알고리즘 접근 방법
 """
 예를 들어, 입력으로 [2, 3, 5, 7, 7, 7]을 받은 경우, 아래와 같이 순열 생성 가능하다.
 
@@ -23,6 +23,8 @@ lst = [2, 3, 5, 7, 7, 7]
 #     def generate(chosen, used):
 #         if len(chosen) == 
 
+
+# 재귀를 이용한 순열 구현(ver1)
 def permutation(arr, r):
     # 1.
     arr = sorted(arr)
@@ -44,12 +46,43 @@ def permutation(arr, r):
                 chosen.pop()
     generate([], used)
 
-permutation(lst, 6)
+
+# 재귀를 이용한 순열 구현(ver2)
+def printPermutation(number, digit):
+    permutation[digit] = number
+    if(digit == N - 1):
+        for i in permutation:
+            print(i, end = ' ')
+        print()
+        return
+    for i in range(1, N + 1):
+        if visited[i]: 
+            continue
+        visited[i] = True
+        printPermutation(i,digit+1)
+        visited[i] = False
+
+
+N = int(input())
+
+visited = [False for i in range(N + 1)]
+print(f'visited = {visited}')
+
+permutation = [0] * N
+
+for i in range(1, N + 1):
+    visited[i] = True
+    printPermutation(i, 0)
+    visited[i] = False
+
+
+# permutation(lst, 6)
 
 
 
 
-# 완전 검색이 아닌 방법
+
+# 탐욕 알고리즘 접근 방법
 """
 - 6개의 숫자는 6자리의 정수 값으로 입력됨
 - counts 배열의 각 원소를 체크하여 run과 triplet 및 baby-gin 여부를 판단함
