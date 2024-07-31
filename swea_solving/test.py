@@ -8,3 +8,7 @@
 #     matrix.append(lst)
 
 # pprint(matrix)
+
+
+string = 'abc'
+print(len(string))
