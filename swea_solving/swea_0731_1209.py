@@ -64,8 +64,11 @@ for _ in range(10):
 
     matrix = []
     to_compare =[]
-    mx_row_sum = 0
-    mx_col_sum = 0
+
+    # mx sum을 함부로 0으로 초기화하면 안됨
+    # 문제 조건을 보고 초기화 조건을 생각하기!
+    mx_row_sum = - 2 ** 16            # '각 행의 합은 integer 범위를 넘어가지 않는다!'
+    mx_col_sum = - 2 ** 16
 
     for _ in range(100):
         row = list(map(int, input().split()))
