@@ -1,18 +1,12 @@
 # SWEA 1210.[S/W 문제해결 기본] 2일차 - Ladder1
 import sys
-sys.stdin = open('sample_input/sample_input(11)_1.txt', 'r')
+sys.stdin = open('sample_input/sample_input(11).txt', 'r')
 
-for _ in range(1):
+for _ in range(10):
     test_case = int(input())
-
-    # 좌회전, 직진, 우회전
-    di = [0, 1, 0]
-    dj = [-1, 0, 1]
-    d = list(zip(di, dj))
 
     matrix = []
     entrances = [-1]
-    success = False
     start_point = -1
 
     first = list(map(int, input().split()))
@@ -37,6 +31,10 @@ for _ in range(1):
             if matrix[x][y] == 2:
                 start_point = e
                 break
+            
+            # 종료 조건
+            if len(road) >=3 and road[-2] == road[-3] :
+                break
 
             # 직진
             if x < 99 and matrix[x + 1][y] >= 1:
@@ -57,23 +55,13 @@ for _ in range(1):
                     y -= 1
                     road.append((x, y))
                     continue
-            
-            find_root = []
 
-            if x == 99 or y == 99:
-                for forward in d:
-                    if x + forward[0] <= 99 and y + forward[1] <= 99:
-                        if road[-2] == (x + forward[0], y + forward[1]):
-                            break
+            road.append((x, y))
 
         road.pop(0)
 
         if start_point != -1:   
             break
-        if e == 91:
-            print(road)
+
     print(f'#{test_case} {start_point}')
         
-"""
-더이상 갈 곳이 없으면 멈추게 해야 함
-"""
