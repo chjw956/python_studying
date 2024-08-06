@@ -31,4 +31,8 @@ lst = [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0
 
 dictionary = {'a':1, 'b':2}
 
-print(list(dictionary.values()))
+# print(list(dictionary.values()))
+
+lst = ['a']
+
+print(''.join(lst))
