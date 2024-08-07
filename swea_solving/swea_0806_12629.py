@@ -1,4 +1,5 @@
 # SWEA 12629. 4866.[파이썬 S/W 문제해결 기본] 4일차 - 괄호검사 (D2)
+# 정훈이가 알려줌!
 
 import sys
 sys.stdin = open('sample_input\sample_input(19).txt', 'r')
