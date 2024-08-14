@@ -18,7 +18,6 @@ class MyQueue:
     def __init__(self):
         self.front = None
         self.rear = None
-        self.queue = []
 
 
     def enQueue(self, item):
@@ -27,8 +26,10 @@ class MyQueue:
         if self.front is None:
             self.front = new_node
             self.rear = new_node
-        else:
+        else:                           
+            # 원래 rear였던 노드의 next 변수에 새롭게 rear가 될 노드의 주소값을 입력
             self.rear.next = new_node
+            # rear를 새롭게 추가된 노드로 변경해줌
             self.rear = new_node
     
 
