@@ -29,10 +29,16 @@ lst = [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0
 # idx_lst.pop(1)
 # print(idx_lst)
 
-dictionary = {'a':1, 'b':2}
+# dictionary = {'a':1, 'b':2}
 
 # print(list(dictionary.values()))
 
-lst = ['a']
+# lst = ['a']
 
-print(''.join(lst))
+# print(''.join(lst))
+
+for l in lst:
+    if not l:
+        print("this is 0")
+    else:
+        print("this is 1")

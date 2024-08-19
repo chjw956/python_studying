@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <form>
+    <div>
+      <span class="username" onclick='spanClick();'>USERNAME : 
+        <input id="usernameInput" type="text" placeholder="아이디를 입력 해 주세요.">
+      </span>  
+    </div>
+    <div>
+      <span class="pwd" onclick='spanClick();'>PWD : 
+        <input id="pwdInput" type="password">
+        <button type="submit">로그인</button>
+      </span>
+    </div>
+  </form>
+</body>
+</html>
+
+<script>
+  function spanClick() {
+    const inputBlock = event.target.children[0];
+    console.log(inputBlock)
+    inputBlock.focus();
+  }
+</script>
