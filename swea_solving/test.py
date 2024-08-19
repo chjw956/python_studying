@@ -37,8 +37,13 @@ lst = [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0
 
 # print(''.join(lst))
 
-for l in lst:
-    if not l:
-        print("this is 0")
-    else:
-        print("this is 1")
+# for l in lst:
+#     if not l:
+#         print("this is 0")
+#     else:
+#         print("this is 1")
+
+dictionary = {'a':1, 'b':2}
+
+if 'a' in dictionary:
+    print(True)

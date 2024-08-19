@@ -2,6 +2,7 @@
 # 후위 표기법 관련
 # 1. 피연산자와 연산자를 어떻게 구분할 것인가
 # 2. 연산자를 어떻게 실제 연산으로 연결시킬 것인가
+# operator 모듈 쓰면 왜 안 되지?
 
 import sys
 import operator
@@ -10,10 +11,10 @@ sys.stdin = open('sample_input\sample_input(24).txt', 'r')
 
 T = int(input())
 
-operators = {"+": operator.add, 
-            "-": operator.sub, 
-            "*": operator.mul, 
-            "/": operator.truediv
+operators = {'+': operator.add, 
+            '-': operator.sub, 
+            '*': operator.mul, 
+            '/': operator.truediv
             }
 
 for tc in range(1, T + 1):
