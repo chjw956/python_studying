@@ -43,7 +43,17 @@ lst = [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0
 #     else:
 #         print("this is 1")
 
-dictionary = {'a':1, 'b':2}
+# dictionary = {'a':1, 'b':2}
 
-if 'a' in dictionary:
-    print(True)
+# if 'a' in dictionary:
+#     print(True)
+
+# a = []
+
+# if not a:
+#     print("a is Empty!")
+
+a = [1, 2, 3]
+
+b = list(enumerate(a))
+print(b)

@@ -1,9 +1,9 @@
-# SWEA 24.08.08. 1222. [S/W 문제해결 기본] 6일차 - 계산기1 (D4)
+# SWEA 24.08.09.(금) - 1223. [S/W 문제해결 기본] 6일차 - 계산기2 (D4)
 
 import sys
 import operator
 
-sys.stdin = open('sample_input\sample_input(31).txt', 'r')
+sys.stdin = open('sample_input\sample_input(32).txt', 'r')
 
 # 후위 표기법으로 수정하는 함수
 def toPostfix(string):
@@ -36,9 +36,9 @@ def toPostfix(string):
         else:
             result_stack.append(int(token))
     
-    if my_stack:
+    for _ in range(len(my_stack)):
         result_stack.append(my_stack.pop())
-    
+        
     return result_stack
 
 

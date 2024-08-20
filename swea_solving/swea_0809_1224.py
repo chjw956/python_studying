@@ -1,9 +1,9 @@
-# SWEA 24.08.08. 1222. [S/W 문제해결 기본] 6일차 - 계산기1 (D4)
+# SWEA 24.08.09.(금) - 1224. [S/W 문제해결 기본] 6일차 - 계산기3 (D4)
 
 import sys
 import operator
 
-sys.stdin = open('sample_input\sample_input(31).txt', 'r')
+sys.stdin = open('sample_input\sample_input(33).txt', 'r')
 
 # 후위 표기법으로 수정하는 함수
 def toPostfix(string):
@@ -15,8 +15,11 @@ def toPostfix(string):
 
     # 1. 후위 표기법으로 수정
     for token in formula:
+        # 토큰이 여는 괄호인 경우
+        if token == '(':
+            my_stack.append(token)
         # 토큰이 연산자인 경우
-        if token in operators:
+        elif token in operators:
             # 토큰이 스택의 top에 저장되어 있는 연산자보다 우선순위가 높으면
             if not my_stack or (operators[token][1] < operators[my_stack[-1]][1]):
                 # 스택에 push함
@@ -36,9 +39,9 @@ def toPostfix(string):
         else:
             result_stack.append(int(token))
     
-    if my_stack:
+    for _ in range(len(my_stack)):
         result_stack.append(my_stack.pop())
-    
+        
     return result_stack
 
 
@@ -68,7 +71,7 @@ operators = {'+': [operator.add, 2],
             '-': [operator.sub, 2], 
             '*': [operator.mul, 1], 
             '/': [operator.truediv, 1],
-            '(':[None, 0]
+            '(':[None, 3]
             }
 
 
