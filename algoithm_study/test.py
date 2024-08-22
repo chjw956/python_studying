@@ -12,7 +12,8 @@
 # coordinate = tuple((input_values[i], input_values[i+1]) for i in range(0, len(input_values), 2))
 
 
-lst = []
+lst = [1, 2, 3]
 
-lst.append(list(map(int, input().split())))
-print(lst)
+# lst.append(list(map(int, input().split())))
+# print(lst)
+print(lst[-1:])
