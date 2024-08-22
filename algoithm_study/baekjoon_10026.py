@@ -8,42 +8,41 @@
 from collections import deque
 
 
-def bfs(graph, searchPoints, visited, num):
-    start = searchPoints.pop()
+def bfs(graph, start, visited):
+    rslt = 1
 
-    if visited[start[0]][start[1]]:
-        return visited, searchPoints, num, 0
-    
-    num += 1
     # 큐(Queue) 구현을 위해 deque 라이브러리 사용
     queue = deque([start])
     # 현재 노드 방문 처리
-    visited[start[0]][start[1]] = num
+    visited[start[0]][start[1]] = rslt
 
     # 상 하 좌 우 [i + di, j + dj]
     directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-    b_num = 0
-    
-    # 큐가 빌 때까지 탐색함
+
     while queue:
+        print()
+        print(f'visited = {visited}')
+        print(f'queue = {queue}')
         v = queue.popleft()
         # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입함
         for d in directions:
             di = v[0] + d[0]
             dj = v[1] + d[1]
-            if 0 <= di < N and 0 <= dj < N and not visited[di][dj]:
-                if graph[v[0]][v[1]] == graph[di][dj]:
-                    queue.append([di, dj])
-                    visited[di][dj] = num
-                elif (graph[v[0]][v[1]] == 'R' and graph[di][dj] == 'G') \
-                    or (graph[v[0]][v[1]] == 'G' and graph[di][dj] == 'R'):
-                        print(f'v = [{v[0]}][{v[1]}]')
-                        b_num = 1
-                        searchPoints.append([di, dj])
-                else:
-                    searchPoints.append([di, dj])
 
-    return visited, searchPoints, num, b_num
+            if 0 <= di < N and 0 <= dj < N and not visited[di][dj]:
+                queue.append([di, dj])
+                # 두 개의 값이 같다면
+                if graph[v[0]][v[1]] == graph[di][dj]:
+                    visited[di][dj] = visited[v[0]][v[1]]
+                # 같지 않다면
+                else:
+                    # 적록 색맹이 아닌 경우
+                    # visited[di][dj] = visited[v[0]][v[1]] + 1
+                    rslt += 1
+                    visited[di][dj] = rslt
+                    # rslt = visited[v[0]][v[1]] + 1
+                            
+    return visited, rslt
 
 
 N = int(input())
@@ -53,13 +52,7 @@ for _ in range(N):
     painting.append(list(input()))
 
 visited = [[0] * N for _ in range(N)]
-searchPoints = [[0, 0]]
-num = 0
-b_num = 0
 
-while len(searchPoints) > 0:
-    visited, searchPoints, num, v = bfs(painting, searchPoints, visited, num)
-    b_num += v
-    # print(visited)
+visited, result= bfs(painting, [0, 0], visited)
 
-print(num, num - b_num - 1)
+print(f'{result}')
