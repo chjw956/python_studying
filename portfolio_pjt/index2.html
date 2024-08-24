@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="typing-container">
+        <span id="text"></span><span id="cursor"></span>
+    </div>
+    <script>
+        const text = "디자인키트, 웹사이트 템플릿 무료 홈페이지 제작 템플릿 시안"; // 타이핑할 문구
+        let index = 0;
+        let speed = 100; // 글자 타이핑 속도 (밀리초 단위)
+
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("text").textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        typeWriter();
+    </script>
+</body>
+</html>

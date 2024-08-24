@@ -1,0 +1,39 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');/* regular-400, medium-500, semibold-600, bold-700 */ 
+
+body,html {height:100%;margin:0;padding:0;background-color: black;}
+ul, li, dl, dt, dd, p, span{margin:0;padding:0}
+a{text-decoration:none}
+li{list-style:none}
+a{text-decoration:none}
+*, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+
+.typing-container {
+  font-size: 35px;
+  font-weight:700;
+  font-family:'Pretendard';
+  margin: 50px;
+  width:450px;
+  word-break:keep-all;
+  color: white;
+}
+
+#cursor {
+  border-left: 2px solid white; /* 커서 스타일 */
+  animation: blink 0.7s infinite;
+  display: inline-block;
+  margin-left: 2px;
+  height: 35px; /* 폰트 크기와 동일하게 설정 */
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

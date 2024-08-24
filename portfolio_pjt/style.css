@@ -1,5 +1,40 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');/* regular-400, medium-500, semibold-600, bold-700 */ 
+
 html {
     scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+}
+
+.galmuri11 {
+  font-family: "Galmuri11", sans-serif;
+  font-weight: bold;
+}
+
+@media all and (min-width:0px){
+  @font-face {
+    font-family: 'EF_Hyunygothic';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/earlyfont/EF_Hyunygothic.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/earlyfont/EF_Hyunygothic.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/earlyfont/EF_Hyunygothic.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/earlyfont/EF_Hyunygothic.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/earlyfont/EF_Hyunygothic.ttf') format("truetype");
+    font-display: swap;
+  }
+
+  .navbar {
+    font-family: '혀니고딕', 'EF_Hyunygothic';
+  }
+
+  .my_name_txt {
+    font-family: '혀니고딕', 'EF_Hyunygothic';
+    font-size: 48px;
+  }
+
 }
 
 .pt-sans-narrow-regular {
@@ -43,184 +78,89 @@ html {
   font-weight: 300;
   font-style: normal;
 }
-  
 
-.main_img {
-    width: 100%;
-    height: 30%;
-    padding: 30% 0 0 0;
-    margin-bottom: 15%;
-    display: flex;
-    justify-content: center;
+#contact-click:hover {
+  text-shadow: 1px 1px 3px rgb(80, 80, 80);
 }
 
-.my_name {
-    width: 100%;
-    height: 20%;
+.main_container {
+  padding-top: 15%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 3%;
+  gap: 3%;
+
+  .item {
+    padding-left: 2%;
+    padding-top: 2%;
+    border: 1px solid yellow;
+    color: white;
+    font-family: '혀니고딕', 'EF_Hyunygothic';
+    font-size: 20px;
+  }
+
+  .item:nth-child(1) {
+    grid-row: 1 / span 3;
     display: flex;
-    justify-content: center;
-    padding-top: 6%;
+    align-items: center;   
+  }
+
+  .item:nth-child(7) {
+    grid-column: 1 / span 2;
+  }
 }
 
 .container{
-    width: 80%;
-    height: 400px;
-    padding-top: 200px;
-    position: relative;
-  }
-  
-  h1, h2{
-    font-size: 75px;
-    
-    span{
-      width: 100%;
-      float: left;
-      color: tertiary-color;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      transform: translateY(-50px);
-      opacity: 0;
-      
-    }
-  }
-  h1 span{
-    animation-name: titleAnimation1;
-    animation-timing-function:ease;
-    animation-delay: 0.6s;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    -webkit-animation-fill-mode: forwards;
-  
-    &:first-child{
-      animation-delay: 0.67s;
-  
-    }
-  
-    &:last-child{
-      color: secondary-color;
-      animation-delay: 0.5s;
-    }
-  }
-  
-  h2{ 
-    top: 200px;
-    position: absolute;
-    
-    span{
-      animation-name: titleAnimation2;
-      animation-timing-function:ease;
-      animation-iteration-count: infinite;
-      animation-delay: 0.6s;
-      animation-duration: 10s;
-      -webkit-animation-fill-mode: forwards;
-  
-      &:first-child{
-        animation-delay: 0.67s;
-  
-        }
-  
-      &:last-child{
-        color: secondary-color;
-        animation-delay: 0.5s;
-      }
-    }
-  }
-  @keyframes titleAnimation1 {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-  20% {
-      transform: translateY(0);
-      opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-  }
-  40% {
-       transform: translateY(0);
-       opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-  }
-  50% {
-       transform: translateY(50px);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-  }
-  70% {
-       transform: translateY(0);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-  }
-  90% {
-       transform: translateY(0);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-  }
-  100% {
-       transform: translateY(0);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-  }
+  font-family: '혀니고딕', 'EF_Hyunygothic';
+  font-size: 20px;
+  color: white;
+  width: 80%;
+  height: 400px;
+  padding-top: 120px;
+  display: flex;
+  /* transform: translate(-50%, -50%); */
 }
 
-@keyframes titleAnimation2 {
+.container, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+
+.typing-container {
+  font-family: '혀니고딕', 'EF_Hyunygothic';
+  font-size: 35px;
+  font-weight:700;
+  font-family:'Pretendard';
+  margin: 50px;
+  width: 80%;
+  word-break:keep-all;
+  color: white;
+}
+
+#cursor {
+  border-left: 2px solid white; /* 커서 스타일 */
+  animation: blink 0.7s infinite;
+  display: inline-block;
+  margin-left: 2px;
+  height: 35px; /* 폰트 크기와 동일하게 설정 */
+  vertical-align: middle;
+}
+
+@keyframes blink {
   0% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    opacity: 1;
   }
-  20% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-  40% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-  
- 50% {
-      transform: translateY(-50px);
-      opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
-  }
-  70% {
-      transform: translateY(0);
-      opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-  }
-  90% {
-       transform: translateY(0);
-       opacity: 1;
-      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  50% {
+    opacity: 0;
   }
   100% {
-       transform: translateY(50px);
-       opacity: 0;
-      -webkit-clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-      clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
-    
+    opacity: 1;
   }
 }
 
 .contact{
-    background-color: #f4f3f3;
+    /* background-color: #f4f3f3; */
+    background-color: #DC3545;
 
     h1 {
+        color: white;
         margin-top: 30%;
         padding: 0 0 0 5%;
     }
@@ -241,6 +181,7 @@ html {
 .projects {
     margin-top: 8%;
     padding: 10%;
+    color: white;
 }
 
 .pjt_imgs {
