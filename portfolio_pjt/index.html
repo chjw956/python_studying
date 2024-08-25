@@ -41,33 +41,35 @@
   </nav>
 
   <div class="main_container">
-    <div class="item main_img" style="background-color: white;">
-      <img src="Muggoja.png" style="width: 100%; height: 100%;">
-    </div>
-    <div class="item main_name">
-      <span>Jiwon Choi (Lv.1)</span>
-    </div>
-    <div class="item main_major">
-      <span>관심분야: 웹 백엔드, DBA</span>
-    </div>
-    <div class="item main_hobby">
-      <span>좋아하는 것: 맛있는 것 / 청소 / 코딩 / 귀여운 동물 / 사진찍기</span>
-    </div>
-    <div class="item main_no">
-      <span>No. 446</span>
-    </div>
-    <div class="item main_sns">
-      <span>sns 주소</span>
-    </div>
-    <div class="item main_sns">
-      <span>기술스택</span>
+    <div class="main_square" >
+      <div class="item main_img" style="background-color: white;">
+        <img src="Muggoja.png" style="width: 100%; height: 100%;">
+      </div>
+      <div class="item main_name">
+        <span>Jiwon Choi (Lv.1)</span>
+      </div>
+      <div class="item main_major">
+        <span>관심분야: 웹 백엔드, DBA</span>
+      </div>
+      <div class="item main_hobby">
+        <span>좋아하는 것: 맛있는 것 / 청소 / 코딩 / 귀여운 동물 / 사진찍기</span>
+      </div>
+      <div class="item main_no">
+        <span>No. 446</span>
+      </div>
+      <div class="item main_sns">
+        <span>sns 주소</span>
+      </div>
+      <div class="item main_sns">
+        <span>기술스택</span>
+      </div>
     </div>
   </div>
 
   <!-- 참고 사이트: https://wsss.tistory.com/88 -->
   <section class="container">
     <div class="typing-container">
-      <span id="text"></span><span id="cursor"></span>
+      <span id="cursor"></span>
     </div>
   </section>
 
@@ -84,8 +86,6 @@
     </div>
   </section>
 
-
-
   <section class="contact" id="contact">
     <h1 class="contact-title new-amsterdam-regular pt-4" style="font-size: 30px; font-weight: lighter;"><ins>contact</ins></h1>
     <div class="contact-imgs ps-5 pb-5 pt-2">
@@ -95,61 +95,6 @@
     </div>
   </section>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> -->
-  <script>
-    let target = document.getElementById("clock")
-
-    function clock() {
-      let time = new Date();
-
-      let hours = time.getHours();
-      let minutes = time.getMinutes();
-      let apm = "AM";
-
-      // Anywhere, Korea (11:00 AM)
-      if (hours >= 13) {
-        hours %= 12
-        apm = "PM"
-      } 
-
-      target.innerHTML = `Anywhere, Korea (${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")} ${apm})`;
-    }
-
-    // 참고 사이트: https://qh5944.tistory.com/158
-    function copy() {
-      let url = '';
-      let textarea = document.createElement("textarea");
-
-      document.body.appendChild(textarea);
-
-      url = 'chjw9559@gmail.com';
-
-      textarea.value = url;
-      textarea.select();
-
-      document.execCommand("copy");
-      document.body.removeChild(textarea);
-
-      alert("메일 주소가 복사되었습니다.");
-    }
-
-    // 참고 사이트: https://www.designkits.co.kr/blog/web-css/text/typing-effect?srsltid=AfmBOopT_IJQ18nLtbcIjKu13SFGvPFa1qRssYT2Tf_7kNvU8ja8IOGV
-    const text = "Hi! I'm Jiwon Choi, an aspiring backend developer, based in Korea."; // 타이핑할 문구
-    // 이것도 해야함 -> I'm interested in DB design, and my dream is to become a developer who creates a good experience for users through efficient programming.
-
-    let index = 0;
-    let speed = 100; // 글자 타이핑 속도 (밀리초 단위)
-
-    function typeWriter() {
-      if (index < text.length) {
-        document.getElementById("text").textContent += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, speed);
-      }
-    }  
-
-    clock();
-    setInterval(clock, 600000);
-    typeWriter();
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>

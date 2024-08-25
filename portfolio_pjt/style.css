@@ -30,11 +30,6 @@ body {
     font-family: '혀니고딕', 'EF_Hyunygothic';
   }
 
-  .my_name_txt {
-    font-family: '혀니고딕', 'EF_Hyunygothic';
-    font-size: 48px;
-  }
-
 }
 
 .pt-sans-narrow-regular {
@@ -84,11 +79,20 @@ body {
 }
 
 .main_container {
-  padding-top: 15%;
+  width: 100%;
+  top: 20%;
+  padding: 3% 0% 3% 10%;
+}
+
+.main_square {
+  width: 90%;
+  margin-top: 10%;
+  padding: 1% 2% 3% 2%;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 3%;
   gap: 3%;
+  border: 4px solid rgba(255, 255, 61, 0.897);
 
   .item {
     padding-left: 2%;
@@ -107,6 +111,7 @@ body {
 
   .item:nth-child(7) {
     grid-column: 1 / span 2;
+    border-top: 1px solid yellow;
   }
 }
 
@@ -118,20 +123,20 @@ body {
   height: 400px;
   padding-top: 120px;
   display: flex;
-  /* transform: translate(-50%, -50%); */
 }
 
 .container, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 
 .typing-container {
   font-family: '혀니고딕', 'EF_Hyunygothic';
-  font-size: 35px;
-  font-weight:700;
-  font-family:'Pretendard';
-  margin: 50px;
-  width: 80%;
+  font-size: 110%;
+  font-weight:300;
+  margin: 5%;
+  width: 90%;
   word-break:keep-all;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 #cursor {
@@ -139,7 +144,8 @@ body {
   animation: blink 0.7s infinite;
   display: inline-block;
   margin-left: 2px;
-  height: 35px; /* 폰트 크기와 동일하게 설정 */
+  font-family: '혀니고딕', 'EF_Hyunygothic';
+  height: 100%; /* 폰트 크기와 동일하게 설정 */
   vertical-align: middle;
 }
 

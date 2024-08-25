@@ -7,23 +7,41 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div class="typing-container">
-        <span id="text"></span><span id="cursor"></span>
+    <div class="typing-container" id="typing-container">
+        <span id="cursor"></span>
     </div>
     <script>
-        const text = "디자인키트, 웹사이트 템플릿 무료 홈페이지 제작 템플릿 시안"; // 타이핑할 문구
-        let index = 0;
-        let speed = 100; // 글자 타이핑 속도 (밀리초 단위)
-
-        function typeWriter() {
+        const speed = 100;
+        // reference: https://www.designkits.co.kr/blog/web-css/text/typing-effect?srsltid=AfmBOopT_IJQ18nLtbcIjKu13SFGvPFa1qRssYT2Tf_7kNvU8ja8IOGV
+        function typeWriter(arr, level, text, index) {  
+            
             if (index < text.length) {
-                document.getElementById("text").textContent += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
+                document.getElementById("text" + level).textContent += text.charAt(index);
+                setTimeout(() => typeWriter(arr, level, text, index + 1), speed);
+            }else{
+                if(level < arr.length){
+                    text = arr[level + 1]
+                    setTimeout(() => {
+                        cursor.insertAdjacentHTML("beforebegin",`<span id="text${level + 1}"></span>`);
+                        typeWriter(arr, level + 1, text, 0), speed});
+                }
+                
             }
-        }
+        }  
 
-        typeWriter();
+        const arr = [
+            "Hi!", 
+            "I'm Jiwon Choi.", 
+            "I'm aspiring backend developer, based in Korea.",
+            "I'm interested in DB design,",
+            "and my dream is to become a developer",
+            "who creates a good experience for users",
+            "through efficient programming."
+        ];
+        const cursor = document.getElementById("cursor");
+
+        cursor.insertAdjacentHTML("beforebegin",`<span id="text0"></span>`);
+        typeWriter(arr, 0, arr[0], 0);        
     </script>
 </body>
 </html>
