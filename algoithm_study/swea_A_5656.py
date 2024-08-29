@@ -5,10 +5,11 @@
 # 구슬이 명중한 벽돌은 상하좌우 (벽돌에 적힌 숫자 - 1)칸 만큼의 벽돌이 같이 제거된다.
 # 또한 벽돌 사이에 빈 공간이 생기는 경우, 벽돌은 중력에 의해 밑으로 내려가게 된다.
 # N개의 벽돌을 떨어트려 최대한 많은 벽돌을 제거하려 할 때, 남은 벽돌의 개수를 구하라.
+# 상웅 팁: 순열로 완전 탐색하여 풀이하라!
 
 import sys
 from collections import deque
-sys.stdin = open('sample_input\sample_input(4).txt', 'r')\
+sys.stdin = open('sample_input\sample_input(4).txt', 'r')
 
 # 2차원 배열 반시계 방향 90도 회전 함수
 def spin(arr, w, h):
