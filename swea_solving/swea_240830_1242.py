@@ -8,7 +8,7 @@
 # 정상 암호코드들에 적혀있는 숫자들의 합을 출력하라.
 # 각 암호코드의 둘레에는 최소 1칸 이상의 빈 공간이 존재한다.
 import sys
-sys.stdin = open('sample_input\sample_input(48).txt', 'r')
+sys.stdin = open('sample_input\sample_input(48)_1.txt', 'r')
 
 
 # 16진수를 십진수로(?) 변환
@@ -93,6 +93,7 @@ passwords = {0: [3, 2, 1, 1],
              9: [3, 1, 1, 2]}
 
 T = int(input())
+T = 1
 
 for tc in range(1, T + 1):
     # N: 배열의 세로 크기, M: 배열의 가로 크기
@@ -121,7 +122,6 @@ for tc in range(1, T + 1):
     start = sr[num]
 
     while start < sr[-1] + 1:
-        print(f'start = {start}')
         # 암호의 시작점에 해당하는 열의 인덱스 값 저장
         sc = [whereNotZero[start][j] for j in range(len(whereNotZero[start])) if j % 2 == 0]
     
@@ -143,14 +143,12 @@ for tc in range(1, T + 1):
 
         mul = len(password) // 56       # 현재의 길이가 몇 배인 건지
 
-        # 길이가 56의 배수가 아닌 경우
-        if len(password) % 56 != 0:
-            mul += 1
-            target = mul * 56               # 목표로 하는 길이 설정
-            toFill = target - len(password) # 목표 길이를 채우기 위해 필요한 공간의 수
-        # 길이가 56의 배수인 경우
-        else:
-            toFill = 0
+        # 현재의 길이가 56자보다 작은 경우 56자로 길이 설정
+        if mul == 0:
+            mul = 1
+            
+        target = mul * 56               # 목표로 하는 길이 설정
+        toFill = target - len(password) # 목표 길이를 채우기 위해 필요한 공간의 수
 
         for k, v in passwords.items():
             for i in range(len(v)):
@@ -158,16 +156,19 @@ for tc in range(1, T + 1):
 
         password = '0' * toFill + password
 
+
         # 시작점 설정
         for k in range(sk - toFill, sk + 1):
+            # 혹시 몰라서 넣은 조건인데, 필요없는지 마지막에 생각해보자.
             if k < 0:
                 continue
             
             value = -1          # 해석한 숫자 저장 변수
             rslt = []
             # 시작점 기준 7 * mul 비트씩 잘라서 숫자 하나로 해석함
+            # 8개의 숫자가 있다고 가정하고 보니까..
             for cnt in range(8):
-                print(f'{k + (7 * mul * cnt)} : {k + 7 * mul * (cnt + 1)}')
+                # print(f'{k + (7 * mul * cnt)} : {k + 7 * mul * (cnt + 1)}')
                 value = interpreter(password[(k + (7 * mul * cnt)) : (k + 7 * mul * (cnt + 1))])
                 if value == -1:
                     break
