@@ -8,7 +8,6 @@
 import sys
 sys.stdin = open('sample_input\sample_input(8).txt', 'r')
 
-# 정훈이 코드 참고
 # 1. 교환 횟수만큼 교환했을 때의 최댓값을 비교함
 def solution(cnt, num_list):
     global max_num
@@ -19,6 +18,7 @@ def solution(cnt, num_list):
         max_num = max(max_num, int(''.join(num_list)))
         return
     
+    # 왜 범위를 이렇게 잡았지?
     for i in range(len(num) - 1):
         for j in range(i + 1, len(num)):
             # 교환 수행
@@ -32,6 +32,7 @@ def solution(cnt, num_list):
                 print(f'visited = {visited}')
                 solution(cnt + 1, num_list)
 
+            # 여기도 교환이 있는데..
             num_list[i], num_list[j] = num_list[i], num_list[j]
         
 
