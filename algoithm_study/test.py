@@ -61,11 +61,27 @@
 # print(toGo)
 
 
-a = [[0] * 5] * 5
-b = list([0] * 5 for _ in range(5))
+# a = [[0] * 5] * 5
+# b = list([0] * 5 for _ in range(5))
 
-a[1][2] = 10
-b[1][2] = 10
+# a[1][2] = 10
+# b[1][2] = 10
 
-print(a)
-print(b)
+# print(a)
+# print(b)
+
+def permutation(empty, lst, k, used):
+    if len(empty) == k:
+        print(empty)
+        return
+    
+    for l in lst:
+        if not used[l]:
+            used[l] = True
+            permutation(empty + [l], lst, k, used)
+            used[l] = False
+
+
+a = [1, 2, 3]
+used = [False] * (len(a) + 1)
+print(permutation([], a, 2, used))
