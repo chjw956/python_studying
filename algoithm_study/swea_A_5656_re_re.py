@@ -8,6 +8,7 @@
 import sys
 sys.stdin = open('sample_input\sample_input(4).txt', 'r')
 from copy import deepcopy
+from collections import deque
 
 
 # 순서 조합을 만들어 반환
@@ -31,41 +32,47 @@ def findStart(arr, n, h):
 
 
 # r: 구슬을 쏘는 지점의 행, l: 구슬을 쏘는 지점의 열, power: 처음 호출 시, 0 입력됨
+# BFS 사용
 def breakBrick(r, l, power):
     global breaking
-    # 현재 지점 정보 기반 power 갱신
-    if breaking[r][l] - 1 > power:
-        power = breaking[r][l] - 1
+    queue = deque([[r, l]])
+    
+    while queue:
+        [r, c] = queue.popleft()
 
-    breaking[r][l] = 0
-
-    if power < 1:
-        return
-
-    for d in directions:
-        mi = r + d[0]
-        mj = l + d[1]
+        if breaking[r][c] < 2:
+            breaking[r][c] = 0
+            continue
         
-        # 지도 범위 내에 있다면
-        if 0 <= mi < H and 0 <= mj < W:
-            breakBrick(mi, mj, power - 1)
+        # 벽돌에 적힌 수가 2 이상이면
+        power = breaking[r][c]
+        breaking[r][c] = 0
 
+        for n in range(1, power):
+            for d in directions:
+                mi = r + d[0] * n
+                mj = c + d[1] * n
+                
+                # 지도 범위 내에 있다면
+                if 0 <= mi < H and 0 <= mj < W:
+                    queue.append([mi, mj])
+                    
 
-def gravity(arr, w, h):
-    global chance
+def gravity(w, h):
+    global breaking
     cnt = 0
-    for i in range(h-1, -1, -1):
-        for j in range(w):
-            # 벽돌이 있다면 남은 벽돌 수 카운팅 +1
-            if arr[i][j]:
+    for j in range(w):
+        empty = 0
+        for i in range(h - 1, -1, -1):
+            # 벽돌이 있다면 남은 벽돌 수에 카운트 + 1
+            if breaking[i][j]:
                 cnt += 1
-
-            # 벽돌이 없는 빈 공간이라면 위에서 한 칸씩 밑으로 내림
-            if (not arr[i][j]) and arr[i - 1][j]:
-                if i - 1 >= 0:
-                    arr[i][j] = arr[i - 1][j]
-                    arr[i - 1][j] = 0
-                    cnt += 1
+                if empty and i + empty < h:
+                    breaking[i + empty][j] = breaking[i][j]
+                    breaking[i][j] = 0
+            # 빈 공간이라면
+            elif not breaking[i][j]:
+                empty += 1
     return cnt
 
 
@@ -73,7 +80,6 @@ def gravity(arr, w, h):
 directions = [[-1, 0], [1, 0], [0, -1], [0, 1]] 
 
 T = int(input())
-T = 1
 
 for tc in range(1, T + 1):
     # N: 구슬을 쏘는 횟수, W x H: 벽돌 배열의 크기
@@ -87,6 +93,7 @@ for tc in range(1, T + 1):
     makeOrder([], N, W)
 
     for chance in chances:
+        remain = 0
         breaking = deepcopy(bricks)
 
         for c in chance:
@@ -95,18 +102,9 @@ for tc in range(1, T + 1):
                 continue
             breakBrick(target, c, 0)
 
-            if chance == [2, 2, 6]:
-                print(f'c = {c}, target = {target}')
-                for b in breaking:
-                    print(b)
-                print()
-
-            # 벽돌 + 중력 효과
-            remain = gravity(breaking, W, H)    
-
-            
+            # 벽돌 깨기 + 중력 효과
+            remain = gravity(W, H)    
 
         min_rest = min(min_rest, remain)
     
     print(f'#{tc} {min_rest}')
-    
