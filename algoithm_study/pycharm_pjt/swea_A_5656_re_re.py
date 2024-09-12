@@ -1,12 +1,13 @@
 # SWEA 5656. 벽돌깨기(D4)
 # python 15초, java 3초
-# 구슬을 쏘아 벽돌을 깨트리는 게임을 할 때, 구슬은 N번만 쏠 수 있으며 벽돌들의 정보는 W x H의 배열로 입력된다. 
-# 배열에서의 0은 빈 공간을 의미하며, 구슬이 명중한 벽돌은 상하좌우로 (벽돌에 적힌 숫자 - 1)칸 만큼의 벽돌까지 깨트린다. 
-# 또한 벽돌이 깨지면서 생긴 빈 공간은 중력의 영향으로 아래로 벽돌들이 떨어지며 메워진다고 할 때, 
+# 구슬을 쏘아 벽돌을 깨트리는 게임을 할 때, 구슬은 N번만 쏠 수 있으며 벽돌들의 정보는 W x H의 배열로 입력된다.
+# 배열에서의 0은 빈 공간을 의미하며, 구슬이 명중한 벽돌은 상하좌우로 (벽돌에 적힌 숫자 - 1)칸 만큼의 벽돌까지 깨트린다.
+# 또한 벽돌이 깨지면서 생긴 빈 공간은 중력의 영향으로 아래로 벽돌들이 떨어지며 메워진다고 할 때,
 # N번 구슬을 쏘아 최대한 많은 벽돌을 제거한다면 남은 벽돌의 개수는 얼마인가?
 
 import sys
-sys.stdin = open('sample_input\sample_input(4)_1.txt', 'r')
+sys.stdin = open('..\sample_input\sample_input(4).txt', 'r')
+
 from copy import deepcopy
 from collections import deque
 
@@ -14,11 +15,11 @@ from collections import deque
 # 순서 조합을 만들어 반환
 def makeOrder(empty, chance, w):
     global chances
-    
+
     if len(empty) == chance:
         chances.append(empty)
         return
-    
+
     for i in range(w):
         makeOrder(empty + [i], chance, w)
 
@@ -36,14 +37,14 @@ def findStart(arr, n, h):
 def breakBrick(r, l, power):
     global breaking
     queue = deque([[r, l]])
-    
+
     while queue:
         [r, c] = queue.popleft()
 
         if breaking[r][c] < 2:
             breaking[r][c] = 0
             continue
-        
+
         # 벽돌에 적힌 수가 2 이상이면
         power = breaking[r][c]
         breaking[r][c] = 0
@@ -52,11 +53,11 @@ def breakBrick(r, l, power):
             for d in directions:
                 mi = r + d[0] * n
                 mj = c + d[1] * n
-                
+
                 # 지도 범위 내에 있다면
                 if 0 <= mi < H and 0 <= mj < W:
                     queue.append([mi, mj])
-                    
+
 
 # 중력에 의해 벽돌들이 아래로 내려오며 빈공간을 메우는 효과
 def gravity(w, h):
@@ -78,7 +79,7 @@ def gravity(w, h):
 
 
 # 상 하 좌 우
-directions = [[-1, 0], [1, 0], [0, -1], [0, 1]] 
+directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 T = int(input())
 
@@ -94,22 +95,25 @@ for tc in range(1, T + 1):
     makeOrder([], N, W)
 
     for chance in chances:
-        remain = 0
+        remain = float('inf')
         breaking = deepcopy(bricks)
-
         for c in chance:
             target = findStart(breaking, c, H)
-            if target == -1 :
+            if target == -1:
                 continue
             breakBrick(target, c, 0)
 
-            for b in breaking:        
-                print(b)
-            print()
-            
             # 벽돌 깨기 + 중력 효과
             remain = gravity(W, H)
 
+            # 남아 있는 벽돌이 없다면 탈출
+            if not remain:
+                break
+
         min_rest = min(min_rest, remain)
-    
+
+        # 남아 있는 벽돌이 없다면 종료
+        if not remain:
+            break
+
     print(f'#{tc} {min_rest}')
