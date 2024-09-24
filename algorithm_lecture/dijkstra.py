@@ -28,7 +28,6 @@ def dijkstra(start):
         # 가장 최단 거리인 노드에 대한 정보 꺼내기
         dist, now = heapq.heappop(pq)
         # 현재 노드가 이미 처리됐다면 skip
-        # 예제 그림: c 위치 가중치 3, 4 로 도착가능 [참고]
         if distance[now] < dist:
             continue
 
