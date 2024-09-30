@@ -15,6 +15,17 @@ T = int(input())
 for tc in range(1, T + 1):
     # N: 구매하고자 하는 카드 개수
     N = int(input())
+    price = [0]
     # (index + 1)개의 카드로 구성된 카드팩마다의 가격
-    price = list(map(int, input().split()))
+    price += [i for i in list(map(int, input().split()))]
 
+    d = [0] * (N + 1)
+    d[1] = price[1]
+
+    for i in range(2, N + 1):
+        values = []
+        for j in range(1, i + 1):
+            values += [d[i - j] + price[j]]
+        d[i] = max(values)
+
+    print(d[N])
