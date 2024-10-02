@@ -61,6 +61,7 @@ for tc in range(1, T + 1):
                 snake.popleft()         # 꼬리가 위치한 칸을 비워줌
             # 사과가 존재하는 칸이라면
             else:
+                apples.remove([ni + 1, nj + 1])
                 snake.append([ni, nj])
         # 벽 또는 몸에 부딪힌 경우
         else:
