@@ -70,18 +70,53 @@
 # print(a)
 # print(b)
 
-def permutation(empty, lst, k, used):
-    if len(empty) == k:
-        print(empty)
-        return
+# def permutation(empty, lst, k, used):
+#     if len(empty) == k:
+#         print(empty)
+#         return
     
-    for l in lst:
-        if not used[l]:
-            used[l] = True
-            permutation(empty + [l], lst, k, used)
-            used[l] = False
+#     for l in lst:
+#         if not used[l]:
+#             used[l] = True
+#             permutation(empty + [l], lst, k, used)
+#             used[l] = False
 
 
-a = [1, 2, 3]
-used = [False] * (len(a) + 1)
-print(permutation([], a, 2, used))
+# a = [1, 2, 3]
+# used = [False] * (len(a) + 1)
+# print(permutation([], a, 2, used))
+
+
+
+# 다시 풀어봄
+from collections import deque
+# n: 트럭의 수, w: 다리 길이, L: 다리의 최대 하중
+n, w, L = map(int, input().split())
+weights = list(map(int, input().split()))
+passed = []
+
+q = deque()
+
+q.append(weights[0])
+weight_sum = weights[0]
+i = 1
+
+while i < n:
+    # 다리 위가 꽉 찼을 때
+    if len(q) >= w:
+        passed.append(q.popleft())
+        weight_sum -= passed[-1]
+        continue
+    if weight_sum + weights[i] <= L:
+        q.append(weights[i])
+        weight_sum += weights[i]
+        i += 1
+    else:
+        q.append(0)  
+
+for _ in range(len(q)):
+    passed.append(q.popleft())
+
+for _ in range(w):
+    passed.append(0)
+print(len(passed))
