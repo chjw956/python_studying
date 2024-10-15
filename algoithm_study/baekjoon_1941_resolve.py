@@ -60,7 +60,6 @@ combination(0, 0)
 
 # 2. 구한 조합에 대해 4명의 이다솜파가 있는지 and 연결되어 있는지 확인
 for temp in temp_princesses:
-    # print(f'temp = {temp}')
     # 2-1. 4명의 이다솜파가 있는지 확인
     cnt = 0
     for [ti, tj] in temp:
@@ -86,7 +85,6 @@ for temp in temp_princesses:
             ni = temp[n][0] + di
             nj = temp[n][1] + dj
             if 0 <= ni < 5 and 0 <= nj < 5 and ([ni, nj] in temp):     
-                print(temp[n], f'[ni, nj] = [{ni}, {nj}]')
                 flag = True
                 break
         
@@ -96,6 +94,4 @@ for temp in temp_princesses:
     if cnt == 7:
         seven_princesses.append(temp)
 
-for s in seven_princesses:
-    print(s)
 print(len(seven_princesses))
